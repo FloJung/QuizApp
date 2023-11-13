@@ -8,15 +8,70 @@
     <title>QuizApp</title>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap file -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body onload="render()">
      
     
+    <h1>QuizApp</h1>
 
+    <div class="container">
+        
+        <div class="card card-back" >
+            <div class="navbar">
+                <img class="logoIcon" src="./img/logo.png">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active navLetter" aria-current="page" href="#">HTML</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link navLetter" href="#">CSS</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link navLetter" href="#">Javascript</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navLetter" href="#">Java</a>
+                  </li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title" id="questiontext">Card title</h5>
 
+              <div class="card mb-2 quizAnswerCard" onclick="answer('answer_1')">
+                <div class="card-body">
+                    <span class="answerLetters">A</span><span id="answer_1">This is some text within a card body.</span>
+                </div>
+              </div>
 
+              <div class="card mb-2 quizAnswerCard" onclick="answer('answer_2')">
+                <div class="card-body">
+                    <span class="answerLetters">B</span><span id="answer_2">This is some text within a card body.</span>
+                </div>
+              </div>
 
+              <div class="card mb-2 quizAnswerCard" onclick="answer('answer_3')">
+                <div class="card-body">
+                    <span class="answerLetters">C</span><span id="answer_3">This is some text within a card body.</span>
+                </div>
+              </div>
 
+              <div class="card mb-2 quizAnswerCard" onclick="answer('answer_4')">
+                <div class="card-body">
+                 <span class="answerLetters">D</span><span id="answer_4">This is some text within a card body.</span>
+                </div>
+              </div>
 
+              
+            </div>
+          </div>
+          <div class="question-footer">
+            <button class="btn btn-outline-dark"><</button>
+            <button class="btn btn-outline-dark" id="nextButton" disabled onclick="nextQuestion()">></button>
+        </div>
+    </div>
+    
 </body>
 </html>
