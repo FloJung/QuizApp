@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    height: 100vh;
+    height: 90vh;
     background-color: #f4edff !important;
     display: flex;
     justify-content: center;
@@ -23,6 +23,8 @@ body {
 }
 
 .navbar {
+    justify-content: space-around !important;
+    flex-direction: column;
     background-color: #27355c;
     padding: 10px 15px !important;
     border-radius: 10px 0px 0px 10px;
@@ -65,4 +67,27 @@ body {
 
 .bg-success, .bg-danger {
     color: #fff !important;
+}
+
+.brainResult {
+    width: 100px;
+    height: auto;
+}
+
+.resultScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scor {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.fontScor {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(220, 149, 18);
 }

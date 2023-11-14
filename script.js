@@ -1,5 +1,5 @@
 
-// git init
+// git add .
 // git commit -m "first commit"
 // git push
 
@@ -63,20 +63,44 @@ let questions = [
 ];
 
 let currentQuestion = 0;
-
+let rightQuestions = 0;
 
 function render() {
     showQuestion();
 }
 
 function showQuestion() {
-    let question = questions[currentQuestion];
 
+    if(currentQuestion >= questions.length) {
+        document.getElementById('completeQuiz').innerHTML = `
+                                <div class="resultScreen">
+                                        <img src="./img/brain result.png" class="brainResult mb-4">
+                                        <h1 class="mb-4">Complete HTML Quiz</h1>
+                                        <span class=" fontScor">YOUR SCOR</span><div><span class="mb-2 scor" id="amountOfRightQuestions">10</span><span class="mb-2 scor">/</span>
+                                        <span id="amountOfQuestions" class="mb-2 scor">10</span></div>
+                                        <button class="btn btn-primary mb-5">REPLAY</button>
+                                </div>
+                                `
+        document.getElementById('amountOfQuestions').innerHTML = questions.length;
+        document.getElementById('amountOfRightQuestions').innerHTML = rightQuestions;
+    }else {
+        let question = questions[currentQuestion];
+        let percent = (currentQuestion + 1) / questions.length;
+        percent = Math.round(percent * 100);
+
+        document.getElementById('progressBar').innerHTML = `${percent} %`
+        document.getElementById('progressBar').style = `width: ${percent}%`
+
+
+        console.log(percent);
     document.getElementById('questiontext').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
     document.getElementById('answer_2').innerHTML = question['answer_2'];
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
+    }
+
+    
 }
 
 function answer(selection) {
@@ -86,6 +110,7 @@ function answer(selection) {
 
     if(selectedQuestionNumber == rightAnswer) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        rightQuestions++;
     }else {
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
