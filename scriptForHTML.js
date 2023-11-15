@@ -6,25 +6,25 @@ function restartGameHTML() {
 
   <h5 class="card-title" id="questiontext">Card title</h5>
 
-  <div class="card mb-2 quizAnswerCard" onclick="answer('answer_1')">
+  <div class="card mb-2 quizAnswerCard" id="answer1" onclick="answer('answer_1')">
     <div class="card-body">
         <span class="answerLetters">A</span><span id="answer_1">This is some text within a card body.</span>
     </div>
   </div>
 
-  <div class="card mb-2 quizAnswerCard" onclick="answer('answer_2')">
+  <div class="card mb-2 quizAnswerCard" id="answer2" onclick="answer('answer_2')">
     <div class="card-body">
         <span class="answerLetters">B</span><span id="answer_2">This is some text within a card body.</span>
     </div>
   </div>
 
-  <div class="card mb-2 quizAnswerCard" onclick="answer('answer_3')">
+  <div class="card mb-2 quizAnswerCard" id="answer3" onclick="answer('answer_3')">
     <div class="card-body">
         <span class="answerLetters">C</span><span id="answer_3">This is some text within a card body.</span>
     </div>
   </div>
 
-  <div class="card mb-2 quizAnswerCard" onclick="answer('answer_4')">
+  <div class="card mb-2 quizAnswerCard" id="answer4" onclick="answer('answer_4')">
     <div class="card-body">
      <span class="answerLetters">D</span><span id="answer_4">This is some text within a card body.</span>
     </div>

@@ -5,36 +5,36 @@
 
 let questions = [
     {
-        "question": "Wer hat HTML erfunden?",
-        "answer_1": "Robbie Williams",
-        "answer_2": "Lady Gaga",
-        "answer_3": "Tim Berners-Lee",
-        "answer_4": "Justin Bieber",
-        "right-answer": 3
+        "question": "Was ist die Hauptfunktion der DNA?",
+        "answer_1": "Energieproduktion",
+        "answer_2": "Informationsspeicherung",
+        "answer_3": "Blutgerinnung",
+        "answer_4": "Muskelkontraktion",
+        "right-answer": 2
     },
     {
-        "question": "Was bedeutet die Abkürzung 'HTML'?",
-        "answer_1": "HyperText Markup Language",
-        "answer_2": "HighTech Modern Language",
-        "answer_3": "Hyperlink and Text Management Language",
-        "answer_4": "Home Tool Markup Language",
+        "question": "Wer ist der Autor von 'Die Verwandlung'?",
+        "answer_1": "Hermann Hesse",
+        "answer_2": "Franz Kafka",
+        "answer_3": "Thomas Mann",
+        "answer_4": "Friedrich Nietzsche",
+        "right-answer": 2
+    },
+    {
+        "question": "Welches Element hat das chemische Symbol 'O'?",
+        "answer_1": "Sauerstoff",
+        "answer_2": "Eisen",
+        "answer_3": "Gold",
+        "answer_4": "Kohlenstoff",
         "right-answer": 1
     },
     {
-        "question": "Welches HTML-Element wird verwendet, um einen Absatz zu erstellen?",
-        "answer_1": "<pd>",
-        "answer_2": ".<paragraph>",
-        "answer_3": ".<p>",
-        "answer_4": "<par>",
+        "question": "In welchem Jahr wurde die Berliner Mauer errichtet?",
+        "answer_1": "1945",
+        "answer_2": "1956",
+        "answer_3": "1961",
+        "answer_4": "1973",
         "right-answer": 3
-    },
-    {
-        "question": "Welches HTML-Tag wird verwendet, um eine Liste zu erstellen?",
-        "answer_1": ".<ul>",
-        "answer_2": ".<ol>",
-        "answer_3": ".<li>",
-        "answer_4": ".<list>",
-        "right-answer": 1
     },
     {
         "question": "Was ist die Funktion des HTML-Tags <a>?",
@@ -45,21 +45,21 @@ let questions = [
         "right-answer": 2
     },
     {
-        "question": "Welches HTML-Element wird verwendet, um eine Tabelle zu erstellen?",
-        "answer_1": ".<table>",
-        "answer_2": ".<t>",
-        "answer_3": ".<tab>",
-        "answer_4": ".<tbl>",
-        "right-answer": 1
+        "question": "Was ist die Hauptkomponente von Guacamole?",
+        "answer_1": "Tomaten",
+        "answer_2": "Avocado",
+        "answer_3": "Zwiebeln",
+        "answer_4": "Paprika",
+        "right-answer": 2
     },
     {
-        "question": "Was ist die Bedeutung des HTML-Attributs 'src'?",
-        "answer_1": "Source",
-        "answer_2": "Style Reference",
-        "answer_3": "Script",
-        "answer_4": "Subscript",
+        "question": "Welcher Planet ist der vierte in unserem Sonnensystem?",
+        "answer_1": "Mars",
+        "answer_2": "Jupiter",
+        "answer_3": "Venus",
+        "answer_4": "Saturn",
         "right-answer": 1
-    }
+    }    
 ];
 
 let currentQuestion = 0;
@@ -68,22 +68,21 @@ let rightQuestions = 0;
 let AUDIO_SUCCESS = new Audio('sound/success.mp3');
 let AUDIO_WRONG = new Audio('sound/worng.mp3');
 
+
 function render() {
-    
     showQuestion();
     enableQuestion();
 }
+
+
 function restartGame() {
     currentQuestion = 0;
     rightQuestions = 0;
-
-    document.getElementById('completeQuiz').innerHTML = restartGameHTML();
-   
+    document.getElementById('completeQuiz').innerHTML = restartGameHTML(); 
   render();
 }
 
 function showQuestion() {
-
     if(gameIsOver()) {
         showEndScreen();
     }else {    
@@ -92,16 +91,16 @@ function showQuestion() {
     }
 }
 
+
 function gameIsOver() {
    return currentQuestion >= questions.length;
 }
+
 
 function answer(selection) {
     let selectedQuestionNumber = selection.slice(-1);
     let rightAnswer = questions[currentQuestion]['right-answer'];
     let idOfRightAnswer = `answer_${rightAnswer}`;
-
-
     if(rightAnswerSelected(selectedQuestionNumber,rightAnswer)) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
         AUDIO_SUCCESS.play();
@@ -116,10 +115,10 @@ function answer(selection) {
 }
 
 
-
 function rightAnswerSelected(selectedQuestionNumber,rightAnswer) {
   return  selectedQuestionNumber == rightAnswer;
 }
+
 
 function nextQuestion() {
     currentQuestion++;
@@ -129,13 +128,14 @@ function nextQuestion() {
     showQuestion();
 }
 
-function previousQuestion() {
 
+function previousQuestion() {
     if(currentQuestion > 0){
         currentQuestion--;
     }
     showQuestion();
 }
+
 
 function resetAnswerButton() {
     for (let i = 1; i <= 4; i++) {
@@ -149,8 +149,6 @@ function resetAnswerButton() {
 }
 
 
-
-
 function updateProgressBar() {
     let percent = (currentQuestion + 1) / questions.length;
     percent = Math.round(percent * 100);
@@ -158,6 +156,7 @@ function updateProgressBar() {
     document.getElementById('progressBar').innerHTML = `${percent} %`
     document.getElementById('progressBar').style = `width: ${percent}%`
 }
+
 
 function showNextQuestion() {
     let question = questions[currentQuestion];
@@ -169,11 +168,13 @@ function showNextQuestion() {
     document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
 
+
 function showEndScreen() {
     document.getElementById('completeQuiz').innerHTML = EndScreenHTML();
     document.getElementById('amountOfQuestions').innerHTML = questions.length;
     document.getElementById('amountOfRightQuestions').innerHTML = rightQuestions;
 }
+
 
 function disabledQuestion() {
     document.getElementById('answer1').removeAttribute("onclick");
@@ -181,6 +182,7 @@ function disabledQuestion() {
     document.getElementById('answer3').removeAttribute("onclick");
     document.getElementById('answer4').removeAttribute("onclick");
 }
+
 
 function enableQuestion() {
     document.getElementById('answer1').setAttribute("onclick", "answer('answer_1')");
