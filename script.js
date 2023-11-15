@@ -69,7 +69,17 @@ let AUDIO_SUCCESS = new Audio('sound/success.mp3');
 let AUDIO_WRONG = new Audio('sound/worng.mp3');
 
 function render() {
+    
     showQuestion();
+    enableQuestion();
+}
+function restartGame() {
+    currentQuestion = 0;
+    rightQuestions = 0;
+
+    document.getElementById('completeQuiz').innerHTML = restartGameHTML();
+   
+  render();
 }
 
 function showQuestion() {
@@ -91,6 +101,7 @@ function answer(selection) {
     let rightAnswer = questions[currentQuestion]['right-answer'];
     let idOfRightAnswer = `answer_${rightAnswer}`;
 
+
     if(rightAnswerSelected(selectedQuestionNumber,rightAnswer)) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
         AUDIO_SUCCESS.play();
@@ -100,8 +111,11 @@ function answer(selection) {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         AUDIO_WRONG.play();
     }
+    disabledQuestion();
     document.getElementById('nextButton').disabled = false;
 }
+
+
 
 function rightAnswerSelected(selectedQuestionNumber,rightAnswer) {
   return  selectedQuestionNumber == rightAnswer;
@@ -115,6 +129,14 @@ function nextQuestion() {
     showQuestion();
 }
 
+function previousQuestion() {
+
+    if(currentQuestion > 0){
+        currentQuestion--;
+    }
+    showQuestion();
+}
+
 function resetAnswerButton() {
     for (let i = 1; i <= 4; i++) {
         const answerElement = document.getElementById('answer_' + i);
@@ -122,18 +144,12 @@ function resetAnswerButton() {
         
         parentNode.classList.remove('bg-success');
         parentNode.classList.remove('bg-danger');
+        enableQuestion();
     }
 }
 
 
-function restartGame() {
-    currentQuestion = 0;
-    rightQuestions = 0;
 
-    document.getElementById('completeQuiz').innerHTML = restartGameHTML();
-
-  render();
-}
 
 function updateProgressBar() {
     let percent = (currentQuestion + 1) / questions.length;
@@ -158,4 +174,19 @@ function showEndScreen() {
     document.getElementById('amountOfQuestions').innerHTML = questions.length;
     document.getElementById('amountOfRightQuestions').innerHTML = rightQuestions;
 }
+
+function disabledQuestion() {
+    document.getElementById('answer1').removeAttribute("onclick");
+    document.getElementById('answer2').removeAttribute("onclick"); 
+    document.getElementById('answer3').removeAttribute("onclick");
+    document.getElementById('answer4').removeAttribute("onclick");
+}
+
+function enableQuestion() {
+    document.getElementById('answer1').setAttribute("onclick", "answer('answer_1')");
+    document.getElementById('answer2').setAttribute("onclick", "answer('answer_2')");
+    document.getElementById('answer3').setAttribute("onclick", "answer('answer_3')");
+    document.getElementById('answer4').setAttribute("onclick", "answer('answer_4')");
+}
+
 
