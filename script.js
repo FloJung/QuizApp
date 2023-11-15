@@ -86,7 +86,6 @@ function showQuestion() {
     if(gameIsOver()) {
         showEndScreen();
     }else {    
-        updateProgressBar();
         showNextQuestion();
     }
 }
@@ -104,7 +103,7 @@ function answer(selection) {
     if(rightAnswerSelected(selectedQuestionNumber,rightAnswer)) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
         AUDIO_SUCCESS.play();
-        rightQuestions++;
+        rightQuestions++;    
     }else {
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
@@ -112,6 +111,7 @@ function answer(selection) {
     }
     disabledQuestion();
     document.getElementById('nextButton').disabled = false;
+    updateProgressBar();
 }
 
 
@@ -155,6 +155,7 @@ function updateProgressBar() {
 
     document.getElementById('progressBar').innerHTML = `${percent} %`
     document.getElementById('progressBar').style = `width: ${percent}%`
+    console.log(percent);
 }
 
 
