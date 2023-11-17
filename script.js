@@ -1,8 +1,3 @@
-
-// git add .
-// git commit -m "first commit"
-// git push
-
 let questions = [
     {
         "question": "Was ist die Hauptfunktion der DNA?",
@@ -155,7 +150,7 @@ function updateProgressBar() {
 
     document.getElementById('progressBar').innerHTML = `${percent} %`
     document.getElementById('progressBar').style = `width: ${percent}%`
-    console.log(percent);
+    
 }
 
 
